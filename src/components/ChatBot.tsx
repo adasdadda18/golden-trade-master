@@ -33,7 +33,7 @@ const ChatBot = () => {
   const handleSendMessage = async () => {
     if (!input.trim()) return;
     
-    const userMessage = { role: 'user', content: input };
+    const userMessage: Message = { role: 'user', content: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
@@ -85,7 +85,7 @@ const ChatBot = () => {
       const data = await response.json();
       
       if (data.candidates && data.candidates[0]?.content) {
-        const botResponse = { 
+        const botResponse: Message = { 
           role: 'assistant', 
           content: data.candidates[0].content.parts[0].text 
         };
@@ -101,7 +101,7 @@ const ChatBot = () => {
         variant: "destructive"
       });
       setMessages((prev) => [...prev, { 
-        role: 'assistant', 
+        role: 'assistant' as const, 
         content: 'Xin lỗi, đã xảy ra lỗi khi xử lý yêu cầu của bạn. Vui lòng thử lại sau.' 
       }]);
     } finally {
