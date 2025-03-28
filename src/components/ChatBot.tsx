@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Bot } from 'lucide-react';
+import { Send, Bot, User } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
@@ -19,8 +19,9 @@ const ChatBot = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
   
+  // Updated to use Gemini Pro 1.5 model
   const API_KEY = "AIzaSyDcQmwW9n5P5hqX3L51buPzZ_VBXqCI_Ok";
-  const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-2.0:generateContent";
+  const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent";
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -117,29 +118,45 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-md mx-auto h-[500px] bg-navy-light rounded-lg border border-navy">
-      <div className="p-4 bg-navy rounded-t-lg border-b border-navy flex items-center">
-        <Bot className="text-gold mr-2" size={20} />
-        <h3 className="text-gold font-semibold">AGT Assistant</h3>
+    <div className="flex flex-col w-full max-w-md mx-auto h-[600px] bg-navy-light rounded-lg border border-gold/30 shadow-lg overflow-hidden">
+      <div className="p-4 bg-gold bg-gradient-to-r from-gold to-gold-dark rounded-t-lg border-b border-navy flex items-center">
+        <Bot className="text-navy mr-2" size={24} />
+        <h3 className="text-navy font-bold text-lg">AGT Assistant</h3>
       </div>
       
-      <div className="flex-1 p-4 overflow-y-auto">
+      <div className="flex-1 p-4 overflow-y-auto bg-gradient-to-b from-navy to-navy-light">
         {messages.map((msg, index) => (
           <div
             key={index}
             className={`mb-4 ${
               msg.role === 'user' 
-                ? 'ml-auto bg-gold/20 text-white' 
-                : 'mr-auto bg-navy text-white'
-            } p-3 rounded-lg max-w-[80%]`}
+                ? 'ml-auto flex items-start gap-2' 
+                : 'mr-auto flex items-start gap-2'
+            } max-w-[80%] animate-fade-in`}
           >
-            {msg.content}
+            <div className={`
+              ${msg.role === 'user' 
+                ? 'order-2 bg-gold text-navy'
+                : 'order-1 bg-navy-light text-white border border-gold/20'}
+              p-3 rounded-lg shadow-md
+            `}>
+              {msg.content}
+            </div>
+            {msg.role === 'user' ? (
+              <div className="bg-gold/80 rounded-full p-1 text-navy order-1">
+                <User size={16} />
+              </div>
+            ) : (
+              <div className="bg-navy rounded-full p-1 text-gold order-2">
+                <Bot size={16} />
+              </div>
+            )}
           </div>
         ))}
         <div ref={messagesEndRef} />
       </div>
       
-      <div className="p-4 border-t border-navy bg-navy-light rounded-b-lg">
+      <div className="p-4 border-t border-gold/30 bg-navy">
         <form 
           onSubmit={(e) => {
             e.preventDefault();
@@ -153,14 +170,18 @@ const ChatBot = () => {
             onKeyDown={handleKeyPress}
             placeholder="Nhập câu hỏi của bạn..."
             disabled={isLoading}
-            className="flex-1 bg-navy-light text-white border-navy focus:border-gold"
+            className="flex-1 bg-navy-light text-white border-gold/30 focus:border-gold focus:ring-2 focus:ring-gold/30"
           />
           <Button 
             type="submit" 
             disabled={isLoading || !input.trim()} 
-            className="bg-gold hover:bg-gold-dark text-navy"
+            className="bg-gold hover:bg-gold-dark text-navy font-medium"
           >
-            <Send size={18} />
+            {isLoading ? (
+              <div className="w-5 h-5 border-2 border-navy border-t-transparent rounded-full animate-spin"></div>
+            ) : (
+              <Send size={18} />
+            )}
           </Button>
         </form>
       </div>
