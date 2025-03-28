@@ -4,6 +4,8 @@ import { Send, Bot, User } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Message {
   role: 'user' | 'assistant';
@@ -18,8 +20,9 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  const isMobile = useIsMobile();
   
-  // Updated to use Gemini Pro 1.5 model
+  // Gemini Pro 1.5 model
   const API_KEY = "AIzaSyDcQmwW9n5P5hqX3L51buPzZ_VBXqCI_Ok";
   const API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro:generateContent";
 
@@ -102,7 +105,7 @@ const ChatBot = () => {
         variant: "destructive"
       });
       setMessages((prev) => [...prev, { 
-        role: 'assistant' as const, 
+        role: 'assistant', 
         content: 'Xin lỗi, đã xảy ra lỗi khi xử lý yêu cầu của bạn. Vui lòng thử lại sau.' 
       }]);
     } finally {
@@ -118,13 +121,16 @@ const ChatBot = () => {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-md mx-auto h-[600px] bg-navy-light rounded-lg border border-gold/30 shadow-lg overflow-hidden">
-      <div className="p-4 bg-gold bg-gradient-to-r from-gold to-gold-dark rounded-t-lg border-b border-navy flex items-center">
-        <Bot className="text-navy mr-2" size={24} />
-        <h3 className="text-navy font-bold text-lg">AGT Assistant</h3>
+    <div className="flex flex-col w-full max-w-md mx-auto h-[500px] sm:h-[600px] bg-navy-light rounded-lg border border-gold/30 shadow-lg overflow-hidden">
+      <div className="p-3 sm:p-4 bg-gold bg-gradient-to-r from-gold to-gold-dark rounded-t-lg border-b border-navy flex items-center">
+        <Avatar className="h-8 w-8 mr-2 bg-navy">
+          <AvatarFallback className="text-gold">AGT</AvatarFallback>
+          <AvatarImage src="/placeholder.svg" alt="AGT Assistant" />
+        </Avatar>
+        <h3 className="text-navy font-bold text-base sm:text-lg">AGT Assistant</h3>
       </div>
       
-      <div className="flex-1 p-4 overflow-y-auto bg-gradient-to-b from-navy to-navy-light">
+      <div className="flex-1 p-3 sm:p-4 overflow-y-auto bg-gradient-to-b from-navy to-navy-light">
         {messages.map((msg, index) => (
           <div
             key={index}
@@ -132,31 +138,35 @@ const ChatBot = () => {
               msg.role === 'user' 
                 ? 'ml-auto flex items-start gap-2' 
                 : 'mr-auto flex items-start gap-2'
-            } max-w-[80%] animate-fade-in`}
+            } max-w-[85%] animate-fade-in`}
           >
-            <div className={`
-              ${msg.role === 'user' 
-                ? 'order-2 bg-gold text-navy'
-                : 'order-1 bg-navy-light text-white border border-gold/20'}
-              p-3 rounded-lg shadow-md
-            `}>
-              {msg.content}
-            </div>
             {msg.role === 'user' ? (
-              <div className="bg-gold/80 rounded-full p-1 text-navy order-1">
-                <User size={16} />
-              </div>
+              <>
+                <div className="order-2 bg-gold text-navy p-2 sm:p-3 rounded-lg shadow-md text-sm sm:text-base">
+                  {msg.content}
+                </div>
+                <Avatar className="h-6 w-6 sm:h-8 sm:w-8 bg-gold/80 order-1">
+                  <AvatarFallback className="text-navy text-xs sm:text-sm">You</AvatarFallback>
+                  <User className="h-3 w-3 sm:h-4 sm:w-4 text-navy" />
+                </Avatar>
+              </>
             ) : (
-              <div className="bg-navy rounded-full p-1 text-gold order-2">
-                <Bot size={16} />
-              </div>
+              <>
+                <Avatar className="h-6 w-6 sm:h-8 sm:w-8 bg-navy order-1">
+                  <AvatarFallback className="text-gold text-xs sm:text-sm">AGT</AvatarFallback>
+                  <Bot className="h-3 w-3 sm:h-4 sm:w-4 text-gold" />
+                </Avatar>
+                <div className="order-2 bg-navy-light text-white border border-gold/20 p-2 sm:p-3 rounded-lg shadow-md text-sm sm:text-base">
+                  {msg.content}
+                </div>
+              </>
             )}
           </div>
         ))}
         <div ref={messagesEndRef} />
       </div>
       
-      <div className="p-4 border-t border-gold/30 bg-navy">
+      <div className="p-3 sm:p-4 border-t border-gold/30 bg-navy">
         <form 
           onSubmit={(e) => {
             e.preventDefault();
@@ -170,17 +180,18 @@ const ChatBot = () => {
             onKeyDown={handleKeyPress}
             placeholder="Nhập câu hỏi của bạn..."
             disabled={isLoading}
-            className="flex-1 bg-navy-light text-white border-gold/30 focus:border-gold focus:ring-2 focus:ring-gold/30"
+            className="flex-1 bg-navy-light text-white border-gold/30 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm sm:text-base"
           />
           <Button 
             type="submit" 
             disabled={isLoading || !input.trim()} 
-            className="bg-gold hover:bg-gold-dark text-navy font-medium"
+            className="bg-gold hover:bg-gold-dark text-navy font-medium h-9 sm:h-10 w-9 sm:w-10 p-0"
+            size="icon"
           >
             {isLoading ? (
-              <div className="w-5 h-5 border-2 border-navy border-t-transparent rounded-full animate-spin"></div>
+              <div className="w-4 h-4 sm:w-5 sm:h-5 border-2 border-navy border-t-transparent rounded-full animate-spin"></div>
             ) : (
-              <Send size={18} />
+              <Send className="h-4 w-4 sm:h-5 sm:w-5" />
             )}
           </Button>
         </form>

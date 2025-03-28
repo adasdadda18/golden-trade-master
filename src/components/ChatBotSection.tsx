@@ -1,8 +1,11 @@
 
 import React from 'react';
 import ChatBot from './ChatBot';
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const ChatBotSection = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <section id="chatbot" className="py-20 bg-navy">
       <div className="container mx-auto px-4">

@@ -22,7 +22,7 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="text-white">Advanced Gold Trading</span>
+              <span className="text-white">Automated Gold Trading</span>
               <span className="block mt-2 bg-gold-gradient bg-clip-text text-transparent">Expert Advisor</span>
             </h1>
             <p className="text-white/80 text-lg md:text-xl mb-8 max-w-xl">
