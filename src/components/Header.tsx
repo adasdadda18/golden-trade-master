@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { ChevronDown } from "lucide-react";
 
 const Header = () => {
   return (
@@ -13,6 +12,7 @@ const Header = () => {
           <a href="#settings" className="text-white hover:text-gold transition-colors">Settings</a>
           <a href="#strategy" className="text-white hover:text-gold transition-colors">Strategy</a>
           <a href="#performance" className="text-white hover:text-gold transition-colors">Performance</a>
+          <a href="#chatbot" className="text-white hover:text-gold transition-colors">Hỗ Trợ</a>
         </nav>
         <Button className="bg-gold hover:bg-gold-dark text-navy font-semibold transition-colors">
           Get Started
