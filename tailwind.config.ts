@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -24,6 +25,15 @@ export default {
 				ring: 'hsl(var(--ring))',
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				gold: {
+					light: '#F5EFD7',
+					DEFAULT: '#D4AF37',
+					dark: '#9E7C24'
+				},
+				navy: {
+					DEFAULT: '#0A1128',
+					light: '#172A46'
+				},
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))'
@@ -84,11 +94,33 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-gold': {
+					'0%, 100%': {
+						opacity: 1,
+					},
+					'50%': {
+						opacity: 0.7,
+					},
+				},
+				'float': {
+					'0%, 100%': {
+						transform: 'translateY(0)',
+					},
+					'50%': {
+						transform: 'translateY(-10px)',
+					},
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-gold': 'pulse-gold 3s infinite',
+				'float': 'float 5s ease-in-out infinite',
+			},
+			backgroundImage: {
+				'gold-gradient': 'linear-gradient(135deg, #f5f0bd 0%, #D4AF37 50%, #9E7C24 100%)',
+				'gold-gradient-light': 'linear-gradient(135deg, #fff9c9 0%, #f5e080 100%)',
 			}
 		}
 	},
