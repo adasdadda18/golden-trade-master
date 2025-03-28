@@ -10,6 +10,9 @@ import ChatBotSection from '../components/ChatBotSection';
 import ConclusionSection from '../components/ConclusionSection';
 import Footer from '../components/Footer';
 
+// Ensuring page has correct meta title
+document.title = "AGT EA - Automated Gold Trading";
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-navy text-white overflow-x-hidden">
