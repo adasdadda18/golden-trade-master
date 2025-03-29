@@ -6,6 +6,8 @@ import FeaturesSection from '../components/FeaturesSection';
 import SettingsSection from '../components/SettingsSection';
 import StrategySection from '../components/StrategySection';
 import PerformanceSection from '../components/PerformanceSection';
+import TestimonialsSection from '../components/TestimonialsSection';
+import FAQSection from '../components/FAQSection';
 import ChatBotSection from '../components/ChatBotSection';
 import ConclusionSection from '../components/ConclusionSection';
 import Footer from '../components/Footer';
@@ -22,6 +24,8 @@ const Index = () => {
       <SettingsSection />
       <StrategySection />
       <PerformanceSection />
+      <TestimonialsSection />
+      <FAQSection />
       <ChatBotSection />
       <ConclusionSection />
       <Footer />
