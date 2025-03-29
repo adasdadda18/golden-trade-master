@@ -1,59 +1,77 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import CaseStudy from '../components/CaseStudy';
-import { Quote } from 'lucide-react';
+import TestimonialCard from '../components/TestimonialCard';
+import { Button } from '../components/ui/button';
+import { Filter, Star } from 'lucide-react';
 
-// Mock data for all testimonials
+// Mock data for all testimonials with ratings added
 const allTestimonials = [
   {
     name: "John Smith",
     position: "Professional Trader",
     content: "AGT EA has completely transformed my gold trading. The recovery system alone saved my account during market volatility.",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
+    rating: 5,
+    category: "professional"
   },
   {
     name: "Maria Chen",
     position: "Forex Analyst",
     content: "I've tested dozens of EAs and AGT stands out for its consistent performance and remarkably low drawdown periods.",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
+    rating: 4,
+    category: "analyst"
   },
   {
     name: "David Kowalski",
     position: "Investment Advisor",
     content: "The automated lot sizing feature is brilliant. My clients are impressed with the risk management capabilities.",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
+    rating: 5,
+    category: "advisor"
   },
   {
     name: "Sarah Johnson",
     position: "Day Trader",
     content: "After trying AGT EA for 6 months, my gold trading profits increased by 32%. The smart entry points are incredibly accurate.",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
+    rating: 4,
+    category: "professional"
   },
   {
     name: "Michael Wong",
     position: "Portfolio Manager",
     content: "The risk management features of AGT EA allow me to sleep soundly knowing my positions are protected with intelligent stop-losses.",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
+    rating: 5,
+    category: "professional"
   },
   {
     name: "Rachel Lewis",
     position: "Retail Trader",
     content: "As a beginner trader, AGT EA gave me the confidence to start trading gold. The automation helps me follow proper trading discipline.",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
+    rating: 4,
+    category: "beginner"
   },
   {
     name: "Thomas Mueller",
     position: "Financial Consultant",
     content: "I recommend AGT EA to my clients who are interested in gold trading. The results have consistently exceeded expectations.",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
+    rating: 5,
+    category: "advisor"
   },
   {
     name: "Emma Garcia",
     position: "Institutional Trader",
     content: "The custom settings allow us to tailor the EA to match our institutional risk parameters. Very impressive flexibility.",
-    image: "/placeholder.svg"
+    image: "/placeholder.svg",
+    rating: 4,
+    category: "professional"
   }
 ];
 
@@ -122,6 +140,12 @@ const caseStudies = [
 document.title = "Testimonials & Case Studies | AGT EA";
 
 const TestimonialsPage = () => {
+  const [filter, setFilter] = useState<string>("all");
+  
+  const filteredTestimonials = filter === "all" 
+    ? allTestimonials 
+    : allTestimonials.filter(testimonial => testimonial.category === filter);
+
   return (
     <div className="min-h-screen bg-navy text-white overflow-x-hidden">
       <Header />
@@ -166,34 +190,56 @@ const TestimonialsPage = () => {
       {/* Testimonials Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold mb-12 text-center">
+          <h2 className="text-3xl font-bold mb-8 text-center">
             <span className="bg-gold-gradient bg-clip-text text-transparent">Trader Testimonials</span>
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {allTestimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-navy-light border border-gold/10 rounded-xl p-6 hover:border-gold/30 transition-all duration-300"
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex p-1 bg-navy-light/50 rounded-lg border border-gold/10">
+              <Button
+                variant="ghost" 
+                className={`${filter === 'all' ? 'bg-navy text-gold' : 'text-white/70'} rounded-md px-4`}
+                onClick={() => setFilter('all')}
               >
-                <div className="mb-4 text-gold">
-                  <Quote className="w-6 h-6 opacity-40" />
-                </div>
-                <p className="text-white/90 italic mb-6 text-sm">{testimonial.content}</p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 rounded-full overflow-hidden bg-navy border border-gold/20">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="ml-3">
-                    <h4 className="text-gold font-medium text-sm">{testimonial.name}</h4>
-                    <p className="text-white/60 text-xs">{testimonial.position}</p>
-                  </div>
-                </div>
-              </div>
+                All
+              </Button>
+              <Button
+                variant="ghost" 
+                className={`${filter === 'professional' ? 'bg-navy text-gold' : 'text-white/70'} rounded-md px-4`}
+                onClick={() => setFilter('professional')}
+              >
+                Professional
+              </Button>
+              <Button
+                variant="ghost" 
+                className={`${filter === 'analyst' ? 'bg-navy text-gold' : 'text-white/70'} rounded-md px-4`}
+                onClick={() => setFilter('analyst')}
+              >
+                Analysts
+              </Button>
+              <Button
+                variant="ghost" 
+                className={`${filter === 'advisor' ? 'bg-navy text-gold' : 'text-white/70'} rounded-md px-4`}
+                onClick={() => setFilter('advisor')}
+              >
+                Advisors
+              </Button>
+              <Button
+                variant="ghost" 
+                className={`${filter === 'beginner' ? 'bg-navy text-gold' : 'text-white/70'} rounded-md px-4`}
+                onClick={() => setFilter('beginner')}
+              >
+                Beginners
+              </Button>
+            </div>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {filteredTestimonials.map((testimonial, index) => (
+              <TestimonialCard 
+                key={index}
+                testimonial={testimonial}
+              />
             ))}
           </div>
         </div>
