@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User } from 'lucide-react';
 import { Button } from "@/components/ui/button";
@@ -14,7 +13,7 @@ interface Message {
 
 const ChatBot = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: 'Xin chào! Tôi là AGT Assistant, tôi có thể giúp gì cho bạn về EA giao dịch vàng?' }
+    { role: 'assistant', content: 'Hello! I am AGT Assistant. How can I help you about Gold EA trading?' }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -56,18 +55,18 @@ const ChatBot = () => {
                 { 
                   text: `
                   Context about AGT EA: 
-                  AGT EA là một công cụ giao dịch mạnh mẽ được thiết kế riêng cho thị trường vàng đầy biến động. 
-                  Logic giao dịch của nó được xây dựng dựa trên các điểm vào và ra chính xác, khiến nó trở nên lý tưởng cho cả người giao dịch mới lẫn người có kinh nghiệm. 
-                  Với trọng tâm là phục hồi từ các khoản lỗ, EA này hoạt động với mức sụt giảm tối thiểu và tối ưu hóa lợi nhuận thông qua các chiến lược quản lý rủi ro. 
-                  Bộ lọc tin tức tích hợp và tính năng thực thi giao dịch tự động giúp đảm bảo sự ổn định trong các điều kiện thị trường biến động.
+                  AGT EA is a powerful trading tool specifically designed for the gold market with high volatility. 
+                  Its trading logic is built on precise entry and exit points, making it ideal for both new and experienced traders. 
+                  The focus is on recovery from losses, with the EA operating with minimal slippage and optimizing profits through risk management strategies. 
+                  The integrated news filter and automatic order execution feature ensure stability in volatile market conditions.
                   
-                  Cài đặt Đề xuất: Khung thời gian: Hoạt động tốt nhất trên các khung thời gian M5, M15 hoặc H1 để đạt kết quả tối ưu.
-                  Cặp tiền: Chủ yếu giao dịch trên XAUUSD (Vàng).
-                  Cài đặt rủi ro: Rủi ro có thể được điều chỉnh theo sở thích của người giao dịch, nhưng mức rủi ro 1-2% cho mỗi giao dịch được khuyến nghị.
-                  Kích thước lô: Có sẵn tính năng tự động điều chỉnh kích thước lô, nhưng nên đặt kích thước lô cố định tùy thuộc vào quy mô tài khoản (ví dụ: 0.01 lô cho mỗi 1000 USD).
-                  Bộ lọc tin tức: Nên bật tùy chọn bộ lọc tin tức để tránh giao dịch trong các sự kiện có tác động lớn.
+                  Recommended Settings: Optimal performance on M5, M15, or H1 timeframes.
+                  Currency Pair: Primarily trade on XAUUSD (Gold).
+                  Risk Management: Risk can be adjusted according to individual preferences, but a 1-2% risk per trade is recommended.
+                  Lot Size: Automatic lot size adjustment is available, but a fixed lot size should be set based on account size (e.g., 0.01 lot per 1000 USD).
+                  News Filter: Enable news filter to avoid trades during significant events.
                   
-                  Tính năng của AGT: Tự động điều chỉnh kích thước lô, Hệ thống phục hồi, Bộ lọc tin tức, Quản lý lợi nhuận, Sụt giảm thấp.
+                  AGT Features: Automatic lot size adjustment, Recovery System, News Filter, Profit Management, Low Slippage.
                   
                   User message: ${input}
                   
@@ -100,13 +99,13 @@ const ChatBot = () => {
     } catch (error) {
       console.error('Error calling Gemini API:', error);
       toast({
-        title: "Lỗi kết nối",
-        description: "Không thể kết nối với dịch vụ AI. Vui lòng thử lại sau.",
+        title: "Connection Error",
+        description: "Failed to connect to the AI service. Please try again later.",
         variant: "destructive"
       });
       setMessages((prev) => [...prev, { 
         role: 'assistant', 
-        content: 'Xin lỗi, đã xảy ra lỗi khi xử lý yêu cầu của bạn. Vui lòng thử lại sau.' 
+        content: 'Sorry, an error occurred while processing your request. Please try again later.' 
       }]);
     } finally {
       setIsLoading(false);
@@ -178,7 +177,7 @@ const ChatBot = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyPress}
-            placeholder="Nhập câu hỏi của bạn..."
+            placeholder="Enter your question..."
             disabled={isLoading}
             className="flex-1 bg-navy-light text-white border-gold/30 focus:border-gold focus:ring-2 focus:ring-gold/30 text-sm sm:text-base"
           />

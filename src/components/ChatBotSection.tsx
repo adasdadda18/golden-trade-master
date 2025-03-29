@@ -10,17 +10,17 @@ const ChatBotSection = () => {
     <section id="chatbot" className="py-20 bg-navy">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">
-          <span className="text-gold">Hỗ Trợ</span> Trực Tuyến
+          <span className="text-gold">Online</span> Support
         </h2>
         <p className="text-white/80 text-center max-w-2xl mx-auto mb-10">
-          Có câu hỏi về AGT EA? Trợ lý AI của chúng tôi sẵn sàng trả lời mọi thắc mắc của bạn về công cụ giao dịch, cài đặt, và chiến lược.
+          Have questions about AGT EA? Our AI assistant is ready to answer your inquiries about the trading tool, installation, and strategies.
         </p>
         <div className="flex flex-col items-center justify-center">
           <div className="w-full max-w-md">
             <ChatBot />
           </div>
           <div className="mt-8 text-center">
-            <p className="text-gold-light italic">"Trải nghiệm hỗ trợ không giới hạn 24/7 với AGT Assistant."</p>
+            <p className="text-gold-light italic">"Experience unlimited 24/7 support with AGT Assistant."</p>
           </div>
         </div>
       </div>

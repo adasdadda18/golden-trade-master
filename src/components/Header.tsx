@@ -17,7 +17,7 @@ const Header = () => {
     { href: "#settings", label: "Settings" },
     { href: "#strategy", label: "Strategy" },
     { href: "#performance", label: "Performance" },
-    { href: "#chatbot", label: "Hỗ Trợ" }
+    { href: "#chatbot", label: "Support" }
   ];
 
   return (
