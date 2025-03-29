@@ -1,6 +1,8 @@
 
 import React from 'react';
 import { Quote } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Button } from './ui/button';
 
 const testimonials = [
   {
@@ -19,6 +21,18 @@ const testimonials = [
     name: "David Kowalski",
     position: "Investment Advisor",
     content: "The automated lot sizing feature is brilliant. My clients are impressed with the risk management capabilities.",
+    image: "/placeholder.svg"
+  },
+  {
+    name: "Sarah Johnson",
+    position: "Day Trader",
+    content: "After trying AGT EA for 6 months, my gold trading profits increased by 32%. The smart entry points are incredibly accurate.",
+    image: "/placeholder.svg"
+  },
+  {
+    name: "Michael Wong",
+    position: "Portfolio Manager",
+    content: "The risk management features of AGT EA allow me to sleep soundly knowing my positions are protected with intelligent stop-losses.",
     image: "/placeholder.svg"
   }
 ];
@@ -41,7 +55,7 @@ const TestimonialsSection = () => {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
+          {testimonials.slice(0, 3).map((testimonial, index) => (
             <div 
               key={index} 
               className="bg-navy/70 backdrop-blur-sm border border-gold/10 rounded-xl p-6 hover:border-gold/30 transition-all duration-300"
@@ -65,6 +79,12 @@ const TestimonialsSection = () => {
               </div>
             </div>
           ))}
+        </div>
+        
+        <div className="flex justify-center mt-12">
+          <Button variant="outline" className="border-gold/20 text-gold hover:border-gold hover:bg-gold/10" asChild>
+            <Link to="/testimonials">View All Success Stories</Link>
+          </Button>
         </div>
       </div>
     </section>
