@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -9,31 +8,31 @@ const testimonials = [
     name: "John Smith",
     position: "Professional Trader",
     content: "AGT EA has completely transformed my gold trading. The recovery system alone saved my account during market volatility.",
-    image: "/placeholder.svg"
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
   },
   {
     name: "Maria Chen",
     position: "Forex Analyst",
     content: "I've tested dozens of EAs and AGT stands out for its consistent performance and remarkably low drawdown periods.",
-    image: "/placeholder.svg"
+    image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
   },
   {
     name: "David Kowalski",
     position: "Investment Advisor",
     content: "The automated lot sizing feature is brilliant. My clients are impressed with the risk management capabilities.",
-    image: "/placeholder.svg"
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
   },
   {
     name: "Sarah Johnson",
     position: "Day Trader",
     content: "After trying AGT EA for 6 months, my gold trading profits increased by 32%. The smart entry points are incredibly accurate.",
-    image: "/placeholder.svg"
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
   },
   {
     name: "Michael Wong",
     position: "Portfolio Manager",
     content: "The risk management features of AGT EA allow me to sleep soundly knowing my positions are protected with intelligent stop-losses.",
-    image: "/placeholder.svg"
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
   }
 ];
 

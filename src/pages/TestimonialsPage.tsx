@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -7,13 +6,13 @@ import TestimonialCard from '../components/TestimonialCard';
 import { Button } from '../components/ui/button';
 import { Filter, Star } from 'lucide-react';
 
-// Mock data for all testimonials with ratings added
+// Mock data for all testimonials with ratings and images added
 const allTestimonials = [
   {
     name: "John Smith",
     position: "Professional Trader",
     content: "AGT EA has completely transformed my gold trading. The recovery system alone saved my account during market volatility.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     rating: 5,
     category: "professional"
   },
@@ -21,7 +20,7 @@ const allTestimonials = [
     name: "Maria Chen",
     position: "Forex Analyst",
     content: "I've tested dozens of EAs and AGT stands out for its consistent performance and remarkably low drawdown periods.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     rating: 4,
     category: "analyst"
   },
@@ -29,7 +28,7 @@ const allTestimonials = [
     name: "David Kowalski",
     position: "Investment Advisor",
     content: "The automated lot sizing feature is brilliant. My clients are impressed with the risk management capabilities.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     rating: 5,
     category: "advisor"
   },
@@ -37,7 +36,7 @@ const allTestimonials = [
     name: "Sarah Johnson",
     position: "Day Trader",
     content: "After trying AGT EA for 6 months, my gold trading profits increased by 32%. The smart entry points are incredibly accurate.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     rating: 4,
     category: "professional"
   },
@@ -45,7 +44,7 @@ const allTestimonials = [
     name: "Michael Wong",
     position: "Portfolio Manager",
     content: "The risk management features of AGT EA allow me to sleep soundly knowing my positions are protected with intelligent stop-losses.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     rating: 5,
     category: "professional"
   },
@@ -53,7 +52,7 @@ const allTestimonials = [
     name: "Rachel Lewis",
     position: "Retail Trader",
     content: "As a beginner trader, AGT EA gave me the confidence to start trading gold. The automation helps me follow proper trading discipline.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     rating: 4,
     category: "beginner"
   },
@@ -61,15 +60,15 @@ const allTestimonials = [
     name: "Thomas Mueller",
     position: "Financial Consultant",
     content: "I recommend AGT EA to my clients who are interested in gold trading. The results have consistently exceeded expectations.",
-    image: "/placeholder.svg",
-    rating: 5,
+    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
+    rating: 4,
     category: "advisor"
   },
   {
     name: "Emma Garcia",
     position: "Institutional Trader",
     content: "The custom settings allow us to tailor the EA to match our institutional risk parameters. Very impressive flexibility.",
-    image: "/placeholder.svg",
+    image: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
     rating: 4,
     category: "professional"
   }
@@ -82,7 +81,7 @@ const caseStudies = [
     trader: {
       name: "Robert Chen",
       position: "Full-time Trader",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1543132220-3ec99c6094dc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
       initials: "RC"
     },
     content: {
@@ -101,7 +100,7 @@ const caseStudies = [
     trader: {
       name: "Jennifer Williams",
       position: "Trading Firm Owner",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
       initials: "JW"
     },
     content: {
@@ -120,7 +119,7 @@ const caseStudies = [
     trader: {
       name: "Marcus Johnson",
       position: "Veteran Trader",
-      image: "/placeholder.svg",
+      image: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80",
       initials: "MJ"
     },
     content: {
