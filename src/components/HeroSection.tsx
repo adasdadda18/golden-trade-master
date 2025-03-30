@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowDownCircle } from "lucide-react";
 
@@ -10,6 +10,18 @@ const HeroSection = () => {
       featuresSection.scrollIntoView({ behavior: 'smooth' });
     }
   };
+  
+  // Load Vimeo player script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://player.vimeo.com/api/player.js";
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
   
   return (
     <section className="relative min-h-screen bg-navy pt-20 pb-16 flex items-center">
@@ -39,57 +51,18 @@ const HeroSection = () => {
           </div>
           
           <div className="md:w-1/2 relative">
-            <div className="relative w-full max-w-md mx-auto animate-float">
+            <div className="relative w-full max-w-md mx-auto">
               <div className="aspect-square bg-gold-gradient p-1 rounded-2xl shadow-[0_0_30px_5px_rgba(212,175,55,0.3)]">
                 <div className="w-full h-full bg-navy rounded-xl overflow-hidden">
-                  <div className="p-4 bg-navy-light">
-                    <div className="flex items-center justify-between mb-2">
-                      <div className="text-gold font-bold">XAUUSD - Gold</div>
-                      <div className="text-gold">M15</div>
-                    </div>
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="bg-navy/80 p-2 rounded">
-                        <div className="text-xs text-white/60">Profit</div>
-                        <div className="text-green-400 font-bold">+$1,245</div>
-                      </div>
-                      <div className="bg-navy/80 p-2 rounded">
-                        <div className="text-xs text-white/60">Trades</div>
-                        <div className="text-white font-bold">85</div>
-                      </div>
-                      <div className="bg-navy/80 p-2 rounded">
-                        <div className="text-xs text-white/60">Drawdown</div>
-                        <div className="text-gold font-bold">8.2%</div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="h-64 bg-navy flex items-center justify-center">
-                    <div className="w-full h-48 px-4 relative">
-                      {/* Simulated chart pattern */}
-                      <svg viewBox="0 0 400 150" className="w-full h-full">
-                        <path 
-                          d="M0,100 L40,90 L80,110 L120,80 L160,120 L200,70 L240,90 L280,40 L320,60 L360,30 L400,50" 
-                          fill="none" 
-                          stroke="#D4AF37" 
-                          strokeWidth="2"
-                        />
-                        <path 
-                          d="M0,100 L40,90 L80,110 L120,80 L160,120 L200,70 L240,90 L280,40 L320,60 L360,30 L400,50 L400,150 L0,150 Z" 
-                          fill="url(#goldGradient)" 
-                          fillOpacity="0.2"
-                        />
-                        <defs>
-                          <linearGradient id="goldGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                            <stop offset="0%" stopColor="#D4AF37" stopOpacity="0.8" />
-                            <stop offset="100%" stopColor="#D4AF37" stopOpacity="0" />
-                          </linearGradient>
-                        </defs>
-                      </svg>
-                      
-                      {/* Buy/Sell markers */}
-                      <div className="absolute top-1/3 left-1/4 w-3 h-3 bg-green-500 rounded-full"></div>
-                      <div className="absolute top-1/4 right-1/3 w-3 h-3 bg-green-500 rounded-full"></div>
-                      <div className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-red-500 rounded-full"></div>
-                    </div>
+                  {/* Vimeo Video Embed */}
+                  <div style={{padding:'100% 0 0 0', position:'relative'}}>
+                    <iframe 
+                      src="https://player.vimeo.com/video/1070737527?h=fd5ae7d240&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                      frameBorder="0" 
+                      allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                      style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
+                      title="AGT EA Introduction"
+                    ></iframe>
                   </div>
                 </div>
               </div>
