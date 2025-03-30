@@ -3,6 +3,7 @@ import React from 'react';
 import { Card, CardContent } from './ui/card';
 import { Quote, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 
 interface TestimonialProps {
   testimonial: {
@@ -16,6 +17,16 @@ interface TestimonialProps {
 }
 
 const TestimonialCard: React.FC<TestimonialProps> = ({ testimonial }) => {
+  // Get initials for avatar fallback
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(part => part[0])
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -45,13 +56,10 @@ const TestimonialCard: React.FC<TestimonialProps> = ({ testimonial }) => {
           <p className="text-white/90 italic mb-6 flex-grow text-sm">{testimonial.content}</p>
           
           <div className="flex items-center mt-auto pt-4 border-t border-gold/10">
-            <div className="w-10 h-10 rounded-full overflow-hidden bg-navy border border-gold/20">
-              <img
-                src={testimonial.image}
-                alt={testimonial.name}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <Avatar className="h-10 w-10 border border-gold/20">
+              <AvatarImage src={testimonial.image} alt={testimonial.name} />
+              <AvatarFallback className="bg-navy text-gold">{getInitials(testimonial.name)}</AvatarFallback>
+            </Avatar>
             <div className="ml-3">
               <h4 className="text-gold font-medium text-sm">{testimonial.name}</h4>
               <p className="text-white/60 text-xs">{testimonial.position}</p>
