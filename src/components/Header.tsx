@@ -1,83 +1,99 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+import { useMobile } from '../hooks/use-mobile';
 
 const Header = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const isMobile = useIsMobile();
-
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
-
-  const menuItems = [
-    { href: "#features", label: "Features" },
-    { href: "#settings", label: "Settings" },
-    { href: "#strategy", label: "Strategy" },
-    { href: "#performance", label: "Performance" },
-    { href: "#chatbot", label: "Support" }
-  ];
+  const isMobile = useMobile();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="py-4 w-full z-50 fixed top-0 bg-navy/80 backdrop-blur-md">
-      <div className="container flex items-center justify-between">
-        <div className="text-gold font-bold text-xl md:text-2xl">AGT EA</div>
+    <header 
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-navy/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
+      }`}
+    >
+      <div className="container flex items-center justify-between py-4">
+        <Link to="/" className="flex items-center gap-2">
+          <div className="bg-gold w-8 h-8 rounded-full flex items-center justify-center">
+            <span className="text-navy font-bold text-lg">A</span>
+          </div>
+          <span className="text-white font-bold text-xl">AGT EA</span>
+        </Link>
         
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-6">
-          {menuItems.map((item) => (
-            <a 
-              key={item.href} 
-              href={item.href} 
-              className="text-white hover:text-gold transition-colors"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        
-        <div className="flex items-center gap-3">
-          <Button className="bg-gold hover:bg-gold-dark text-navy font-semibold transition-colors hidden sm:flex">
-            Get Started
-          </Button>
-          
-          {/* Mobile Menu Button */}
-          <Button 
-            variant="ghost" 
-            size="icon"
-            className="md:hidden text-white hover:text-gold" 
-            onClick={toggleMobileMenu}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
-        </div>
-      </div>
-
-      {/* Mobile Menu Dropdown */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-navy-light border-t border-gold/10 absolute w-full top-full left-0 z-50 py-3 shadow-lg animate-in fade-in slide-in-from-top-5">
-          <div className="container flex flex-col space-y-3">
-            {menuItems.map((item) => (
-              <a 
-                key={item.href} 
-                href={item.href} 
-                className="text-white hover:text-gold py-2 border-b border-gold/10"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.label}
-              </a>
-            ))}
+        {isMobile ? (
+          <>
             <Button 
-              className="bg-gold hover:bg-gold-dark text-navy font-semibold mt-3 w-full"
-              onClick={() => setMobileMenuOpen(false)}
+              variant="ghost" 
+              size="icon" 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-white hover:text-gold"
             >
-              Get Started
+              {isMenuOpen ? <X /> : <Menu />}
+            </Button>
+            
+            {isMenuOpen && (
+              <div className="absolute top-full left-0 w-full bg-navy/95 backdrop-blur-md py-4 shadow-lg">
+                <nav className="container flex flex-col gap-2">
+                  <Link 
+                    to="/"
+                    className="text-white hover:text-gold py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Home
+                  </Link>
+                  <Link 
+                    to="/product"
+                    className="text-white hover:text-gold py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Product
+                  </Link>
+                  <Link 
+                    to="/testimonials"
+                    className="text-white hover:text-gold py-2"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Testimonials
+                  </Link>
+                  <Button className="bg-gold hover:bg-gold-dark text-navy mt-2">
+                    Download Now
+                  </Button>
+                </nav>
+              </div>
+            )}
+          </>
+        ) : (
+          <div className="flex items-center gap-6">
+            <nav className="flex items-center gap-6">
+              <Link to="/" className="text-white hover:text-gold font-medium">
+                Home
+              </Link>
+              <Link to="/product" className="text-white hover:text-gold font-medium">
+                Product
+              </Link>
+              <Link to="/testimonials" className="text-white hover:text-gold font-medium">
+                Testimonials
+              </Link>
+            </nav>
+            <Button className="bg-gold hover:bg-gold-dark text-navy">
+              Download Now
             </Button>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 };
