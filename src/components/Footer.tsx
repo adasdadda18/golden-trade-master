@@ -1,8 +1,10 @@
-
 import React from 'react';
+import { WhatsApp } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const whatsappNumber = '+84919249839';
+  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, '')}`;
   
   return (
     <footer className="bg-navy-light py-12 border-t border-gold/10">
@@ -39,6 +41,16 @@ const Footer = () => {
             <div>
               <h4 className="text-gold font-medium mb-3">Contact</h4>
               <ul className="space-y-2">
+                <li>
+                  <a 
+                    href={whatsappLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="text-white/70 hover:text-gold text-sm flex items-center gap-2"
+                  >
+                    <WhatsApp className="w-4 h-4 text-green-500" /> WhatsApp
+                  </a>
+                </li>
                 <li><a href="#" className="text-white/70 hover:text-gold text-sm">Email Us</a></li>
                 <li><a href="#" className="text-white/70 hover:text-gold text-sm">Live Chat</a></li>
                 <li><a href="#" className="text-white/70 hover:text-gold text-sm">Feedback</a></li>
