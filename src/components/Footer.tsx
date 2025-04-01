@@ -1,5 +1,5 @@
 import React from 'react';
-import { WhatsApp } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -48,7 +48,7 @@ const Footer = () => {
                     rel="noopener noreferrer" 
                     className="text-white/70 hover:text-gold text-sm flex items-center gap-2"
                   >
-                    <WhatsApp className="w-4 h-4 text-green-500" /> WhatsApp
+                    <MessageCircle className="w-4 h-4 text-green-500" /> WhatsApp
                   </a>
                 </li>
                 <li><a href="#" className="text-white/70 hover:text-gold text-sm">Email Us</a></li>
