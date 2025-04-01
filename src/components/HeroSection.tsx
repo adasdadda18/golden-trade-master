@@ -56,8 +56,8 @@ const HeroSection = () => {
           <div className="md:w-1/2 w-full relative mt-8 md:mt-0">
             <div className="relative w-full max-w-md mx-auto">
               <div className="aspect-square bg-gold-gradient p-1 rounded-2xl shadow-[0_0_30px_5px_rgba(212,175,55,0.3)]">
-                <div className="w-full h-full bg-navy rounded-xl overflow-hidden">
-                  {/* Vimeo Video Embed with mobile-friendly settings */}
+                <div className="w-full h-full bg-white/90 rounded-xl overflow-hidden">
+                  {/* Vimeo Video Embed với nền sáng hơn */}
                   <div style={{padding:'100% 0 0 0', position:'relative'}}>
                     <iframe 
                       src="https://player.vimeo.com/video/1070737527?h=fd5ae7d240&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;playsinline=1&amp;portrait=0&amp;title=0&amp;byline=0" 
@@ -69,14 +69,7 @@ const HeroSection = () => {
                     ></iframe>
                   </div>
                   
-                  {/* Fallback for devices where iframe might not work */}
-                  {isMobile && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-navy/80 pointer-events-none">
-                      <p className="text-gold text-center px-4">
-                        Tap to watch our video introduction to AGT EA
-                      </p>
-                    </div>
-                  )}
+                  {/* Đã loại bỏ phần fallback hiển thị dòng text */}
                 </div>
               </div>
             </div>
