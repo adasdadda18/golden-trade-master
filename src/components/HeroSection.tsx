@@ -2,8 +2,11 @@
 import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowDownCircle } from "lucide-react";
+import { useIsMobile } from '../hooks/use-mobile';
 
 const HeroSection = () => {
+  const isMobile = useIsMobile();
+  
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features');
     if (featuresSection) {
@@ -31,7 +34,7 @@ const HeroSection = () => {
       </div>
       
       <div className="container relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               <span className="text-white">Automated Gold Trading</span>
@@ -50,20 +53,32 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="md:w-1/2 relative">
+          <div className="md:w-1/2 w-full relative mt-8 md:mt-0">
             <div className="relative w-full max-w-md mx-auto">
               <div className="aspect-square bg-gold-gradient p-1 rounded-2xl shadow-[0_0_30px_5px_rgba(212,175,55,0.3)]">
                 <div className="w-full h-full bg-navy rounded-xl overflow-hidden">
-                  {/* Vimeo Video Embed */}
+                  {/* Vimeo Video Embed with mobile-friendly settings */}
                   <div style={{padding:'100% 0 0 0', position:'relative'}}>
                     <iframe 
-                      src="https://player.vimeo.com/video/1070737527?h=fd5ae7d240&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                      src="https://player.vimeo.com/video/1070737527?h=fd5ae7d240&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;playsinline=1&amp;portrait=0&amp;title=0&amp;byline=0" 
                       frameBorder="0" 
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
                       style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
                       title="AGT EA Introduction"
+                      webkitallowfullscreen="true"
+                      mozallowfullscreen="true"
+                      allowFullScreen
                     ></iframe>
                   </div>
+                  
+                  {/* Fallback for devices where iframe might not work */}
+                  {isMobile && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-navy/80 pointer-events-none">
+                      <p className="text-gold text-center px-4">
+                        Tap to watch our video introduction to AGT EA
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
