@@ -65,9 +65,7 @@ const HeroSection = () => {
                       allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
                       style={{position:'absolute', top:0, left:0, width:'100%', height:'100%'}}
                       title="AGT EA Introduction"
-                      webkitallowfullscreen="true"
-                      mozallowfullscreen="true"
-                      allowFullScreen
+                      allowFullScreen={true}
                     ></iframe>
                   </div>
                   
