@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import HeroSection from '../components/HeroSection';
 import FeaturesSection from '../components/FeaturesSection';
@@ -16,6 +16,11 @@ import Footer from '../components/Footer';
 document.title = "AGT EA - Automated Gold Trading";
 
 const Index = () => {
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-navy text-white overflow-x-hidden">
       <Header />
