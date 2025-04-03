@@ -70,6 +70,38 @@ const testimonials = {
       content: "Các tính năng quản lý rủi ro của AGT EA cho phép tôi ngủ ngon biết rằng vị thế của mình được bảo vệ bằng các điểm dừng lỗ thông minh.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
     }
+  ],
+  zh: [
+    {
+      name: "John Smith",
+      position: "专业交易员",
+      content: "AGT EA完全改变了我的黄金交易方式。仅恢复系统就在市场波动期间拯救了我的账户。",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
+    },
+    {
+      name: "Maria Chen",
+      position: "外汇分析师",
+      content: "我测试了数十个EA，AGT因其稳定的性能和显著低的回撤期而脱颖而出。",
+      image: "https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
+    },
+    {
+      name: "David Kowalski",
+      position: "投资顾问",
+      content: "自动调整交易量的功能非常出色。我的客户对风险管理能力印象深刻。",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
+    },
+    {
+      name: "Sarah Johnson",
+      position: "日内交易员",
+      content: "使用AGT EA 6个月后，我的黄金交易利润增加了32%。智能入场点非常精准。",
+      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
+    },
+    {
+      name: "Michael Wong",
+      position: "投资组合经理",
+      content: "AGT EA的风险管理功能让我安心入睡，因为我知道我的头寸受到智能止损的保护。",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=256&q=80"
+    }
   ]
 };
 
@@ -77,7 +109,7 @@ const TestimonialsSection = () => {
   const { language } = useLanguage();
   const { t } = useTranslations(language);
   
-  const currentTestimonials = language === 'en' ? testimonials.en : testimonials.vi;
+  const currentTestimonials = language === 'en' ? testimonials.en : language === 'vi' ? testimonials.vi : testimonials.zh;
 
   return (
     <section id="testimonials" className="py-20 bg-navy-light relative">

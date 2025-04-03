@@ -13,28 +13,48 @@ const FeaturesSection = () => {
   const features = [
     {
       icon: <BarChart className="w-10 h-10 text-gold" />,
-      title: language === 'en' ? 'Automatic Lot Size Adjustment' : 'Điều Chỉnh Khối Lượng Tự Động',
-      description: language === 'en' ? 'Flexibly adjusts lot sizes based on account balance and desired risk level.' : 'Linh hoạt điều chỉnh kích thước lô dựa trên số dư tài khoản và mức độ rủi ro mong muốn.'
+      title: language === 'en' ? 'Automatic Lot Size Adjustment' : 
+             language === 'vi' ? 'Điều Chỉnh Khối Lượng Tự Động' : 
+             '自动调整交易量',
+      description: language === 'en' ? 'Flexibly adjusts lot sizes based on account balance and desired risk level.' : 
+                   language === 'vi' ? 'Linh hoạt điều chỉnh kích thước lô dựa trên số dư tài khoản và mức độ rủi ro mong muốn.' : 
+                   '根据账户余额和所需风险水平灵活调整交易量。'
     },
     {
       icon: <TrendingUp className="w-10 h-10 text-gold" />,
-      title: language === 'en' ? 'Recovery System' : 'Hệ Thống Phục Hồi',
-      description: language === 'en' ? 'Built-in recovery feature helps offset losses by adjusting future trade sizes.' : 'Tính năng phục hồi tích hợp giúp bù đắp tổn thất bằng cách điều chỉnh kích thước giao dịch trong tương lai.'
+      title: language === 'en' ? 'Recovery System' : 
+             language === 'vi' ? 'Hệ Thống Phục Hồi' : 
+             '恢复系统',
+      description: language === 'en' ? 'Built-in recovery feature helps offset losses by adjusting future trade sizes.' : 
+                   language === 'vi' ? 'Tính năng phục hồi tích hợp giúp bù đắp tổn thất bằng cách điều chỉnh kích thước giao dịch trong tương lai.' : 
+                   '内置恢复功能通过调整未来交易规模来抵消损失。'
     },
     {
       icon: <Bell className="w-10 h-10 text-gold" />,
-      title: language === 'en' ? 'News Filter' : 'Bộ Lọc Tin Tức',
-      description: language === 'en' ? 'Avoid high volatility periods by pausing trading before and after major news events.' : 'Tránh các giai đoạn biến động cao bằng cách tạm dừng giao dịch trước và sau các sự kiện tin tức lớn.'
+      title: language === 'en' ? 'News Filter' : 
+             language === 'vi' ? 'Bộ Lọc Tin Tức' : 
+             '新闻过滤器',
+      description: language === 'en' ? 'Avoid high volatility periods by pausing trading before and after major news events.' : 
+                   language === 'vi' ? 'Tránh các giai đoạn biến động cao bằng cách tạm dừng giao dịch trước và sau các sự kiện tin tức lớn.' : 
+                   '通过在重大新闻事件前后暂停交易来避免高波动时期。'
     },
     {
       icon: <LineChart className="w-10 h-10 text-gold" />,
-      title: language === 'en' ? 'Profit Management' : 'Quản Lý Lợi Nhuận',
-      description: language === 'en' ? 'EA automatically closes trades when certain profit targets are reached.' : 'EA tự động đóng giao dịch khi đạt được mục tiêu lợi nhuận nhất định.'
+      title: language === 'en' ? 'Profit Management' : 
+             language === 'vi' ? 'Quản Lý Lợi Nhuận' : 
+             '利润管理',
+      description: language === 'en' ? 'EA automatically closes trades when certain profit targets are reached.' : 
+                   language === 'vi' ? 'EA tự động đóng giao dịch khi đạt được mục tiêu lợi nhuận nhất định.' : 
+                   '当达到特定利润目标时，EA自动关闭交易。'
     },
     {
       icon: <Shield className="w-10 h-10 text-gold" />,
-      title: language === 'en' ? 'Low Drawdown' : 'Giảm Thiểu Rủi Ro',
-      description: language === 'en' ? 'Strategically minimizes drawdown, maintaining stable performance even in uncertain market conditions.' : 'Giảm thiểu rủi ro một cách chiến lược, duy trì hiệu suất ổn định ngay cả trong điều kiện thị trường không chắc chắn.'
+      title: language === 'en' ? 'Low Drawdown' : 
+             language === 'vi' ? 'Giảm Thiểu Rủi Ro' : 
+             '低回撤',
+      description: language === 'en' ? 'Strategically minimizes drawdown, maintaining stable performance even in uncertain market conditions.' : 
+                   language === 'vi' ? 'Giảm thiểu rủi ro một cách chiến lược, duy trì hiệu suất ổn định ngay cả trong điều kiện thị trường không chắc chắn.' : 
+                   '战略性地最小化回撤，即使在不确定的市场条件下也能保持稳定的表现。'
     }
   ];
 

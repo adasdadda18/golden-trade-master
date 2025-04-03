@@ -33,6 +33,20 @@ const performanceData = {
     { month: 'T10', balance: 18200 },
     { month: 'T11', balance: 19500 },
     { month: 'T12', balance: 21000 },
+  ],
+  zh: [
+    { month: '一月', balance: 10000 },
+    { month: '二月', balance: 11200 },
+    { month: '三月', balance: 10800 },
+    { month: '四月', balance: 12300 },
+    { month: '五月', balance: 13500 },
+    { month: '六月', balance: 14200 },
+    { month: '七月', balance: 13800 },
+    { month: '八月', balance: 15400 },
+    { month: '九月', balance: 16700 },
+    { month: '十月', balance: 18200 },
+    { month: '十一月', balance: 19500 },
+    { month: '十二月', balance: 21000 },
   ]
 };
 
@@ -47,7 +61,7 @@ const PerformanceSection = () => {
     { label: t('recoveryFactor'), value: '3.2' },
   ];
 
-  const chartData = language === 'en' ? performanceData.en : performanceData.vi;
+  const chartData = language === 'en' ? performanceData.en : language === 'vi' ? performanceData.vi : performanceData.zh;
 
   return (
     <section id="performance" className="py-20 bg-navy relative">

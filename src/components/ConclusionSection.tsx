@@ -15,12 +15,18 @@ const ConclusionSection = () => {
     'Recovery system for minimizing risk',
     'Low drawdown and stable performance',
     'Suitable for both new and experienced traders'
-  ] : [
+  ] : language === 'vi' ? [
     'Giải pháp đáng tin cậy cho giao dịch vàng',
     'Chiến lược dựa trên lưới với bộ lọc tin tức',
     'Hệ thống phục hồi để giảm thiểu rủi ro',
     'Giảm giá thấp và hiệu suất ổn định',
     'Phù hợp cho cả nhà giao dịch mới và có kinh nghiệm'
+  ] : [
+    '黄金交易的可靠解决方案',
+    '带有新闻过滤器的网格策略',
+    '风险最小化的恢复系统',
+    '低回撤和稳定表现',
+    '适合新手和有经验的交易者'
   ];
 
   return (
@@ -31,7 +37,9 @@ const ConclusionSection = () => {
             <span className="bg-gold-gradient bg-clip-text text-transparent">{t('readyToTransform')}</span>
           </h2>
           <p className="text-white/80 max-w-2xl mx-auto text-lg">
-            {language === 'en' ? 'AGT EA is a powerful expert advisor that provides traders with a reliable solution for gold trading' : 'AGT EA là một cố vấn chuyên gia mạnh mẽ cung cấp cho các nhà giao dịch giải pháp đáng tin cậy cho giao dịch vàng'}
+            {language === 'en' ? 'AGT EA is a powerful expert advisor that provides traders with a reliable solution for gold trading' : 
+             language === 'vi' ? 'AGT EA là một cố vấn chuyên gia mạnh mẽ cung cấp cho các nhà giao dịch giải pháp đáng tin cậy cho giao dịch vàng' : 
+             'AGT EA是一个强大的专家顾问，为交易者提供黄金交易的可靠解决方案'}
           </p>
         </div>
         

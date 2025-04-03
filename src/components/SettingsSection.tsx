@@ -34,7 +34,7 @@ const SettingsSection = () => {
       title: 'News Filter',
       description: 'The news filter option should be enabled to avoid trading during high-impact events.'
     }
-  ] : [
+  ] : language === 'vi' ? [
     {
       icon: <Clock className="w-6 h-6 text-gold" />,
       title: 'Khung Thời Gian',
@@ -59,6 +59,32 @@ const SettingsSection = () => {
       icon: <AlertTriangle className="w-6 h-6 text-gold" />,
       title: 'Bộ Lọc Tin Tức',
       description: 'Nên bật tùy chọn bộ lọc tin tức để tránh giao dịch trong các sự kiện có tác động cao.'
+    }
+  ] : [
+    {
+      icon: <Clock className="w-6 h-6 text-gold" />,
+      title: '时间周期',
+      description: '在M5、M15或H1时间周期上效果最佳，可获得最优结果。'
+    },
+    {
+      icon: <LineChart className="w-6 h-6 text-gold" />,
+      title: '货币对',
+      description: '主要在XAUUSD（黄金）上交易。'
+    },
+    {
+      icon: <Percent className="w-6 h-6 text-gold" />,
+      title: '风险设置',
+      description: '风险可根据交易者偏好进行调整，但建议每笔交易风险为1-2%。'
+    },
+    {
+      icon: <DollarSign className="w-6 h-6 text-gold" />,
+      title: '交易量大小',
+      description: '提供自动交易量调整功能，但固定交易量应根据账户规模设置（例如，每1000美元设为0.01手）。'
+    },
+    {
+      icon: <AlertTriangle className="w-6 h-6 text-gold" />,
+      title: '新闻过滤器',
+      description: '应启用新闻过滤器选项，以避免在高影响事件期间交易。'
     }
   ];
 

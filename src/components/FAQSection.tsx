@@ -38,7 +38,7 @@ const FAQSection = () => {
       question: "What kind of support is provided after purchase?",
       answer: "We offer lifetime support for all purchasers, including installation assistance, parameter optimization, and troubleshooting. Our team typically responds within 24 hours on business days."
     }
-  ] : [
+  ] : language === 'vi' ? [
     {
       question: "AGT EA khác biệt như thế nào so với các bot giao dịch vàng khác?",
       answer: "AGT EA nổi bật với hệ thống phục hồi thích ứng, điểm vào/ra chính xác dựa trên thuật toán độc quyền và hệ thống lọc tin tức hiệu quả. Khác với nhiều EA vàng khác, nó được thiết kế đặc biệt cho các mẫu biến động độc đáo của thị trường vàng."
@@ -62,6 +62,31 @@ const FAQSection = () => {
     {
       question: "Loại hỗ trợ nào được cung cấp sau khi mua?",
       answer: "Chúng tôi cung cấp hỗ trợ suốt đời cho tất cả người mua, bao gồm hỗ trợ cài đặt, tối ưu hóa tham số và xử lý sự cố. Đội ngũ của chúng tôi thường phản hồi trong vòng 24 giờ vào các ngày làm việc."
+    }
+  ] : [
+    {
+      question: "AGT EA与其他黄金交易机器人有何不同？",
+      answer: "AGT EA以其自适应恢复系统、基于专有算法的精确进出点和高效的新闻过滤系统而脱颖而出。与许多其他黄金EA不同，它专为黄金市场独特的波动模式而设计。"
+    },
+    {
+      question: "建议的最小账户规模是多少？",
+      answer: "虽然AGT EA可以适用于任何规模的账户，但我们建议从至少1,000美元开始，以确保适当的风险管理并充分利用恢复系统功能。"
+    },
+    {
+      question: "AGT EA是否适用于任何经纪商？",
+      answer: "AGT EA适用于大多数提供XAUUSD交易的MT4/MT5经纪商。然而，为了获得最佳性能，我们推荐点差低且执行迅速的经纪商。"
+    },
+    {
+      question: "更新频率如何？",
+      answer: "我们定期更新AGT EA以适应不断变化的市场条件。主要更新通常每季度发布一次，而次要更新和优化则每月提供。"
+    },
+    {
+      question: "使用AGT EA需要技术知识吗？",
+      answer: "不需要技术知识。AGT EA配有详细的安装指南和预配置的设置。我们的支持团队也可以协助安装和优化。"
+    },
+    {
+      question: "购买后提供什么样的支持？",
+      answer: "我们为所有购买者提供终身支持，包括安装协助、参数优化和故障排除。我们的团队通常在工作日24小时内回应。"
     }
   ];
 
@@ -102,7 +127,7 @@ const FAQSection = () => {
         
         <div className="mt-12 text-center">
           <p className="text-white/70">
-            {t('stillHaveQuestions')} <a href="#chatbot" className="text-gold hover:underline">{t('askAI')}</a> {language === 'en' ? 'or' : 'hoặc'} <a href="#" className="text-gold hover:underline">{t('contactSupport')}</a>.
+            {t('stillHaveQuestions')} <a href="#chatbot" className="text-gold hover:underline">{t('askAI')}</a> {language === 'en' ? 'or' : language === 'vi' ? 'hoặc' : '或'} <a href="#" className="text-gold hover:underline">{t('contactSupport')}</a>.
           </p>
         </div>
       </div>
