@@ -1,36 +1,67 @@
 
 import React from 'react';
 import { Clock, LineChart, DollarSign, Percent, AlertTriangle } from 'lucide-react';
-
-const settings = [
-  {
-    icon: <Clock className="w-6 h-6 text-gold" />,
-    title: 'Timeframe',
-    description: 'Works best on M5, M15, or H1 timeframes for optimal results.'
-  },
-  {
-    icon: <LineChart className="w-6 h-6 text-gold" />,
-    title: 'Currency Pair',
-    description: 'Primarily trades on XAUUSD (Gold).'
-  },
-  {
-    icon: <Percent className="w-6 h-6 text-gold" />,
-    title: 'Risk Settings',
-    description: 'Risk can be adjusted according to trader preference, but 1-2% risk per trade is recommended.'
-  },
-  {
-    icon: <DollarSign className="w-6 h-6 text-gold" />,
-    title: 'Lot Size',
-    description: 'Auto lot size adjustment is available, but fixed lot sizes should be set depending on account size (e.g., 0.01 lot per 1000 USD).'
-  },
-  {
-    icon: <AlertTriangle className="w-6 h-6 text-gold" />,
-    title: 'News Filter',
-    description: 'The news filter option should be enabled to avoid trading during high-impact events.'
-  }
-];
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslations } from '../translations';
 
 const SettingsSection = () => {
+  const { language } = useLanguage();
+  const { t } = useTranslations(language);
+
+  const settings = language === 'en' ? [
+    {
+      icon: <Clock className="w-6 h-6 text-gold" />,
+      title: 'Timeframe',
+      description: 'Works best on M5, M15, or H1 timeframes for optimal results.'
+    },
+    {
+      icon: <LineChart className="w-6 h-6 text-gold" />,
+      title: 'Currency Pair',
+      description: 'Primarily trades on XAUUSD (Gold).'
+    },
+    {
+      icon: <Percent className="w-6 h-6 text-gold" />,
+      title: 'Risk Settings',
+      description: 'Risk can be adjusted according to trader preference, but 1-2% risk per trade is recommended.'
+    },
+    {
+      icon: <DollarSign className="w-6 h-6 text-gold" />,
+      title: 'Lot Size',
+      description: 'Auto lot size adjustment is available, but fixed lot sizes should be set depending on account size (e.g., 0.01 lot per 1000 USD).'
+    },
+    {
+      icon: <AlertTriangle className="w-6 h-6 text-gold" />,
+      title: 'News Filter',
+      description: 'The news filter option should be enabled to avoid trading during high-impact events.'
+    }
+  ] : [
+    {
+      icon: <Clock className="w-6 h-6 text-gold" />,
+      title: 'Khung Thời Gian',
+      description: 'Hoạt động tốt nhất trên khung thời gian M5, M15 hoặc H1 để có kết quả tối ưu.'
+    },
+    {
+      icon: <LineChart className="w-6 h-6 text-gold" />,
+      title: 'Cặp Tiền Tệ',
+      description: 'Chủ yếu giao dịch trên XAUUSD (Vàng).'
+    },
+    {
+      icon: <Percent className="w-6 h-6 text-gold" />,
+      title: 'Cài Đặt Rủi Ro',
+      description: 'Rủi ro có thể được điều chỉnh theo sở thích của nhà giao dịch, nhưng khuyến nghị rủi ro 1-2% cho mỗi giao dịch.'
+    },
+    {
+      icon: <DollarSign className="w-6 h-6 text-gold" />,
+      title: 'Kích Thước Lô',
+      description: 'Có sẵn chức năng điều chỉnh kích thước lô tự động, nhưng nên đặt kích thước lô cố định tùy thuộc vào quy mô tài khoản (ví dụ: 0,01 lô cho mỗi 1000 USD).'
+    },
+    {
+      icon: <AlertTriangle className="w-6 h-6 text-gold" />,
+      title: 'Bộ Lọc Tin Tức',
+      description: 'Nên bật tùy chọn bộ lọc tin tức để tránh giao dịch trong các sự kiện có tác động cao.'
+    }
+  ];
+
   return (
     <section id="settings" className="py-20 bg-navy relative">
       <div className="absolute inset-0 overflow-hidden">
@@ -41,11 +72,10 @@ const SettingsSection = () => {
         <div className="flex flex-col lg:flex-row gap-12 items-center">
           <div className="lg:w-1/2">
             <h2 className="text-4xl font-bold mb-6">
-              <span className="text-white">Recommended</span>
-              <span className="block bg-gold-gradient bg-clip-text text-transparent">Settings</span>
+              <span className="text-white">{t('recommendedSettings')}</span>
             </h2>
             <p className="text-white/80 mb-8">
-              To maximize the potential of AGT EA, the following settings are recommended. These configurations have been tested extensively to deliver optimal performance in various market conditions.
+              {t('settingsDescription')}
             </p>
             
             <div className="space-y-4">
@@ -67,19 +97,19 @@ const SettingsSection = () => {
           <div className="lg:w-1/2">
             <div className="bg-navy-light border border-gold/20 rounded-xl overflow-hidden shadow-lg">
               <div className="p-4 border-b border-gold/10">
-                <h3 className="text-gold font-semibold">Settings Preview</h3>
+                <h3 className="text-gold font-semibold">{t('settingsPreview')}</h3>
               </div>
               <div className="p-6 space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="col-span-2">
-                    <label className="block text-white/60 text-sm mb-1">Currency Pair</label>
+                    <label className="block text-white/60 text-sm mb-1">{t('currencyPair')}</label>
                     <select className="w-full bg-navy border border-gold/20 text-white rounded-md p-2 focus:border-gold">
                       <option>XAUUSD (Gold)</option>
                     </select>
                   </div>
                   
                   <div>
-                    <label className="block text-white/60 text-sm mb-1">Timeframe</label>
+                    <label className="block text-white/60 text-sm mb-1">{t('timeframe')}</label>
                     <select className="w-full bg-navy border border-gold/20 text-white rounded-md p-2 focus:border-gold">
                       <option>M5</option>
                       <option>M15</option>
@@ -88,16 +118,16 @@ const SettingsSection = () => {
                   </div>
                   
                   <div>
-                    <label className="block text-white/60 text-sm mb-1">Lot Size</label>
+                    <label className="block text-white/60 text-sm mb-1">{t('lotSize')}</label>
                     <select className="w-full bg-navy border border-gold/20 text-white rounded-md p-2 focus:border-gold">
-                      <option>Auto</option>
-                      <option>Fixed (0.01)</option>
-                      <option>Fixed (0.1)</option>
+                      <option>{language === 'en' ? 'Auto' : 'Tự động'}</option>
+                      <option>{language === 'en' ? 'Fixed (0.01)' : 'Cố định (0.01)'}</option>
+                      <option>{language === 'en' ? 'Fixed (0.1)' : 'Cố định (0.1)'}</option>
                     </select>
                   </div>
                   
                   <div>
-                    <label className="block text-white/60 text-sm mb-1">Risk (%)</label>
+                    <label className="block text-white/60 text-sm mb-1">{t('risk')} (%)</label>
                     <input 
                       type="number" 
                       value="2" 
@@ -106,24 +136,24 @@ const SettingsSection = () => {
                   </div>
                   
                   <div>
-                    <label className="block text-white/60 text-sm mb-1">Recovery Mode</label>
+                    <label className="block text-white/60 text-sm mb-1">{t('recoveryMode')}</label>
                     <select className="w-full bg-navy border border-gold/20 text-white rounded-md p-2 focus:border-gold">
-                      <option>Enabled</option>
-                      <option>Disabled</option>
+                      <option>{t('enabled')}</option>
+                      <option>{t('disabled')}</option>
                     </select>
                   </div>
                   
                   <div className="col-span-2">
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input type="checkbox" checked className="rounded border-gold/30 text-gold" />
-                      <span className="text-white">Enable News Filter</span>
+                      <span className="text-white">{t('enableNewsFilter')}</span>
                     </label>
                   </div>
                 </div>
                 
                 <div className="pt-4 mt-4 border-t border-gold/10">
                   <button className="w-full bg-gold hover:bg-gold-dark text-navy font-semibold py-2 rounded-md transition-colors">
-                    Apply Settings
+                    {t('applySettings')}
                   </button>
                 </div>
               </div>

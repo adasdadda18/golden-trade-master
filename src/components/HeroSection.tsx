@@ -42,7 +42,7 @@ const HeroSection = () => {
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               <span className="text-white">{t('heroTitle')}</span>
-              <span className="block mt-2 bg-gold-gradient bg-clip-text text-transparent">Expert Advisor</span>
+              <span className="block mt-2 bg-gold-gradient bg-clip-text text-transparent">{t('expertAdvisor')}</span>
             </h1>
             <p className="text-white/80 text-lg md:text-xl mb-8 max-w-xl">
               {t('heroSubtitle')}
