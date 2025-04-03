@@ -1,4 +1,3 @@
-
 import { Language } from '../contexts/LanguageContext';
 
 type TranslationKey = 
@@ -158,6 +157,58 @@ const translations: Record<Language, Record<TranslationKey, string>> = {
     askAI: 'Hỏi trợ lý AI của chúng tôi',
     contactSupport: 'liên hệ đội hỗ trợ của chúng tôi',
     expertAdvisor: 'Cố Vấn Chuyên Gia'
+  },
+  zh: {
+    downloadNow: '立即下载',
+    learnMore: '了解更多',
+    home: '首页',
+    product: '产品',
+    testimonials: '用户评价',
+    features: '功能特点',
+    settings: '设置',
+    strategy: '策略',
+    performance: '性能',
+    faq: '常见问题',
+    support: '支持',
+    conclusion: '总结',
+    heroTitle: '自动化黄金交易',
+    heroSubtitle: '专为波动的黄金市场设计的强大交易工具，具有精确的进出点。',
+    featuresTitle: 'AGT 功能',
+    featuresSubtitle: '我们的专家顾问配备了强大的功能，旨在最大化您的黄金交易潜力',
+    readyToTransform: '准备好改变您的黄金交易了吗？',
+    keyBenefits: '主要优势',
+    getStartedToday: '今天开始',
+    experienceThePower: '体验AGT EA的强大功能，看到您的黄金交易结果的差异',
+    compatibleWith: '兼容MT4 | 即时下载 | 24/7支持',
+    viewAllSuccess: '查看所有成功案例',
+    whatTradersSay: '交易者怎么说',
+    hearFromTraders: '听听已将AGT EA整合到其交易系统中的交易者的意见',
+    accountGrowth: '账户随时间增长',
+    totalProfit: '总利润',
+    winRate: '胜率',
+    maxDrawdown: '最大回撤',
+    recoveryFactor: '恢复因子',
+    performanceTitle: '性能与回撤',
+    performanceSubtitle: '在回测和实时模拟中，AGT EA已经证明了以最小的回撤生成一致利润的能力',
+    performanceNote: '即使在波动的市场条件下，EA也能有效运行，这要归功于其新闻过滤器和恢复机制。回撤得到良好控制，损失在短时间内得到抵消。',
+    recommendedSettings: '推荐设置',
+    settingsDescription: '为了最大化AGT EA的潜力，建议使用以下设置。这些配置经过广泛测试，可在各种市场条件下提供最佳性能。',
+    settingsPreview: '设置预览',
+    currencyPair: '货币对',
+    timeframe: '时间周期',
+    lotSize: '交易量',
+    risk: '风险 (%)',
+    recoveryMode: '恢复模式',
+    enabled: '启用',
+    disabled: '禁用',
+    enableNewsFilter: '启用新闻过滤器',
+    applySettings: '应用设置',
+    frequentlyAskedQuestions: '常见问题',
+    findAnswers: '查找有关AGT EA的常见问题答案',
+    stillHaveQuestions: '还有问题？',
+    askAI: '咨询我们的AI助手',
+    contactSupport: '联系我们的支持团队',
+    expertAdvisor: '专家顾问'
   }
 };
 

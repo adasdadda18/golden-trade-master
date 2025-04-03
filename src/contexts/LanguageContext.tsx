@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Define the available languages
-export type Language = 'en' | 'vi';
+export type Language = 'en' | 'vi' | 'zh';
 
 // Define the language context type
 interface LanguageContextType {
@@ -22,7 +22,7 @@ export const LanguageProvider: React.FC<{children: ReactNode}> = ({ children }) 
   const [language, setLanguage] = useState<Language>(
     () => {
       const savedLanguage = localStorage.getItem('language') as Language;
-      return savedLanguage === 'vi' ? 'vi' : 'en';
+      return savedLanguage === 'vi' ? 'vi' : savedLanguage === 'zh' ? 'zh' : 'en';
     }
   );
 
