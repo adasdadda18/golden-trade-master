@@ -2,47 +2,51 @@
 import React from 'react';
 import { TrendingUp, Shield, Bell, BarChart, LineChart } from 'lucide-react';
 import { useIsMobile } from "@/hooks/use-mobile";
-
-const features = [
-  {
-    icon: <BarChart className="w-10 h-10 text-gold" />,
-    title: 'Automatic Lot Size Adjustment',
-    description: 'Flexibly adjusts lot sizes based on account balance and desired risk level.'
-  },
-  {
-    icon: <TrendingUp className="w-10 h-10 text-gold" />,
-    title: 'Recovery System',
-    description: 'Built-in recovery feature helps offset losses by adjusting future trade sizes.'
-  },
-  {
-    icon: <Bell className="w-10 h-10 text-gold" />,
-    title: 'News Filter',
-    description: 'Avoid high volatility periods by pausing trading before and after major news events.'
-  },
-  {
-    icon: <LineChart className="w-10 h-10 text-gold" />,
-    title: 'Profit Management',
-    description: 'EA automatically closes trades when certain profit targets are reached.'
-  },
-  {
-    icon: <Shield className="w-10 h-10 text-gold" />,
-    title: 'Low Drawdown',
-    description: 'Strategically minimizes drawdown, maintaining stable performance even in uncertain market conditions.'
-  }
-];
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslations } from '../translations';
 
 const FeaturesSection = () => {
   const isMobile = useIsMobile();
+  const { language } = useLanguage();
+  const { t } = useTranslations(language);
   
+  const features = [
+    {
+      icon: <BarChart className="w-10 h-10 text-gold" />,
+      title: language === 'en' ? 'Automatic Lot Size Adjustment' : 'Điều Chỉnh Khối Lượng Tự Động',
+      description: language === 'en' ? 'Flexibly adjusts lot sizes based on account balance and desired risk level.' : 'Linh hoạt điều chỉnh kích thước lô dựa trên số dư tài khoản và mức độ rủi ro mong muốn.'
+    },
+    {
+      icon: <TrendingUp className="w-10 h-10 text-gold" />,
+      title: language === 'en' ? 'Recovery System' : 'Hệ Thống Phục Hồi',
+      description: language === 'en' ? 'Built-in recovery feature helps offset losses by adjusting future trade sizes.' : 'Tính năng phục hồi tích hợp giúp bù đắp tổn thất bằng cách điều chỉnh kích thước giao dịch trong tương lai.'
+    },
+    {
+      icon: <Bell className="w-10 h-10 text-gold" />,
+      title: language === 'en' ? 'News Filter' : 'Bộ Lọc Tin Tức',
+      description: language === 'en' ? 'Avoid high volatility periods by pausing trading before and after major news events.' : 'Tránh các giai đoạn biến động cao bằng cách tạm dừng giao dịch trước và sau các sự kiện tin tức lớn.'
+    },
+    {
+      icon: <LineChart className="w-10 h-10 text-gold" />,
+      title: language === 'en' ? 'Profit Management' : 'Quản Lý Lợi Nhuận',
+      description: language === 'en' ? 'EA automatically closes trades when certain profit targets are reached.' : 'EA tự động đóng giao dịch khi đạt được mục tiêu lợi nhuận nhất định.'
+    },
+    {
+      icon: <Shield className="w-10 h-10 text-gold" />,
+      title: language === 'en' ? 'Low Drawdown' : 'Giảm Thiểu Rủi Ro',
+      description: language === 'en' ? 'Strategically minimizes drawdown, maintaining stable performance even in uncertain market conditions.' : 'Giảm thiểu rủi ro một cách chiến lược, duy trì hiệu suất ổn định ngay cả trong điều kiện thị trường không chắc chắn.'
+    }
+  ];
+
   return (
     <section id="features" className="py-20 bg-gradient-to-b from-navy to-navy-light">
       <div className="container px-4 sm:px-6">
         <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6">
-            <span className="bg-gold-gradient bg-clip-text text-transparent">AGT Features</span>
+            <span className="bg-gold-gradient bg-clip-text text-transparent">{t('featuresTitle')}</span>
           </h2>
           <p className="text-white/80 max-w-2xl mx-auto text-base sm:text-lg px-4">
-            Our Expert Advisor comes packed with powerful features designed to maximize your gold trading potential
+            {t('featuresSubtitle')}
           </p>
         </div>
 

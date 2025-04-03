@@ -4,11 +4,16 @@ import { Link } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useIsMobile } from '../hooks/use-mobile';
+import LanguageSwitcher from './LanguageSwitcher';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslations } from '../translations';
 
 const Header = () => {
   const isMobile = useIsMobile();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language } = useLanguage();
+  const { t } = useTranslations(language);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -35,14 +40,17 @@ const Header = () => {
         
         {isMobile ? (
           <>
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-white hover:text-gold"
-            >
-              {isMenuOpen ? <X /> : <Menu />}
-            </Button>
+            <div className="flex items-center gap-2">
+              <LanguageSwitcher />
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="text-white hover:text-gold"
+              >
+                {isMenuOpen ? <X /> : <Menu />}
+              </Button>
+            </div>
             
             {isMenuOpen && (
               <div className="absolute top-full left-0 w-full bg-navy/95 backdrop-blur-md py-4 shadow-lg">
@@ -52,24 +60,24 @@ const Header = () => {
                     className="text-white hover:text-gold py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Home
+                    {t('home')}
                   </Link>
                   <Link 
                     to="/product"
                     className="text-white hover:text-gold py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Product
+                    {t('product')}
                   </Link>
                   <Link 
                     to="/testimonials"
                     className="text-white hover:text-gold py-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    Testimonials
+                    {t('testimonials')}
                   </Link>
                   <Button className="bg-gold hover:bg-gold-dark text-navy mt-2">
-                    Download Now
+                    {t('downloadNow')}
                   </Button>
                 </nav>
               </div>
@@ -79,18 +87,21 @@ const Header = () => {
           <div className="flex items-center gap-6">
             <nav className="flex items-center gap-6">
               <Link to="/" className="text-white hover:text-gold font-medium">
-                Home
+                {t('home')}
               </Link>
               <Link to="/product" className="text-white hover:text-gold font-medium">
-                Product
+                {t('product')}
               </Link>
               <Link to="/testimonials" className="text-white hover:text-gold font-medium">
-                Testimonials
+                {t('testimonials')}
               </Link>
             </nav>
-            <Button className="bg-gold hover:bg-gold-dark text-navy">
-              Download Now
-            </Button>
+            <div className="flex items-center gap-4">
+              <LanguageSwitcher />
+              <Button className="bg-gold hover:bg-gold-dark text-navy">
+                {t('downloadNow')}
+              </Button>
+            </div>
           </div>
         )}
       </div>

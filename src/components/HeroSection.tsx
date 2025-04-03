@@ -3,9 +3,13 @@ import React, { useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { ArrowDownCircle } from "lucide-react";
 import { useIsMobile } from '../hooks/use-mobile';
+import { useLanguage } from '../contexts/LanguageContext';
+import { useTranslations } from '../translations';
 
 const HeroSection = () => {
   const isMobile = useIsMobile();
+  const { language } = useLanguage();
+  const { t } = useTranslations(language);
   
   const scrollToFeatures = () => {
     const featuresSection = document.getElementById('features');
@@ -37,18 +41,18 @@ const HeroSection = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-12">
           <div className="md:w-1/2 text-center md:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              <span className="text-white">Automated Gold Trading</span>
+              <span className="text-white">{t('heroTitle')}</span>
               <span className="block mt-2 bg-gold-gradient bg-clip-text text-transparent">Expert Advisor</span>
             </h1>
             <p className="text-white/80 text-lg md:text-xl mb-8 max-w-xl">
-              A powerful trading tool specifically designed for the volatile gold market with precise entry and exit points.
+              {t('heroSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Button className="bg-gold hover:bg-gold-dark text-navy text-lg px-8 py-6 h-auto font-semibold">
-                Download Now
+                {t('downloadNow')}
               </Button>
               <Button onClick={scrollToFeatures} variant="outline" className="border-gold text-gold hover:bg-gold/10 text-lg px-8 py-6 h-auto">
-                Learn More
+                {t('learnMore')}
               </Button>
             </div>
           </div>
@@ -68,8 +72,6 @@ const HeroSection = () => {
                       allowFullScreen={true}
                     ></iframe>
                   </div>
-                  
-                  {/* Đã loại bỏ phần fallback hiển thị dòng text */}
                 </div>
               </div>
             </div>
